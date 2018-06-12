@@ -1,7 +1,6 @@
 package sample.sample_socket_client;
 
 import android.os.AsyncTask;
-import android.support.annotation.RequiresPermission;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +12,6 @@ import android.widget.Spinner;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
@@ -72,13 +69,6 @@ public class MainActivity extends AppCompatActivity {
                                    String.valueOf(spinner4.getSelectedItem());
 
                 et = (EditText)findViewById(R.id.editText);
-                byte buf[] = new byte[et.length()];
-
-                // データの送信はbyte配列方になるので変換
-                for (int ii = 0; ii < et.length(); ii++ )
-                {
-                    buf[ii] = (byte) et.getText().charAt(ii);
-                }
 
                 // ソケット通信用にポート設定。送信したいデータとIPアドレス設定。
                 InetSocketAddress inetSocketAddress = new InetSocketAddress(IPAddress, 5000);

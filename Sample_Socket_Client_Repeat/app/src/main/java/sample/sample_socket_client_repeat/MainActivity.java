@@ -69,8 +69,14 @@ public class MainActivity extends AppCompatActivity implements ASyncTaskTest.Cal
     public void CallBack() {
         count++;
 
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
         // 再度非同期タスク設定して実行。
-        ak = new ASyncTaskTest(count);
+        ak = new ASyncTaskTest(String.valueOf(count));
         ak.setOnCallBack(this);
         ak.execute(inetSocketAddress);  // 非同期タスクを実行
     }
@@ -82,17 +88,12 @@ public class MainActivity extends AppCompatActivity implements ASyncTaskTest.Cal
                            String.valueOf(spinner3.getSelectedItem()) + '.' +
                            String.valueOf(spinner4.getSelectedItem());
 
-        byte buf[] = new byte[String.valueOf(count).length()];
-
-        // データの送信はbyte配列型になるので変換
-        buf = String.valueOf(count).getBytes();
-
-        // コールバック設定
-        ak = new ASyncTaskTest(buf);
-        ak.setOnCallBack(this);
-
         // ソケット通信用にポート設定。送信したいデータとIPアドレス設定。
         inetSocketAddress = new InetSocketAddress(IPAddress, 5000);
+
+        // コールバック設定
+        ak = new ASyncTaskTest(String.valueOf(count));
+        ak.setOnCallBack(this);
         ak.execute(inetSocketAddress);  // 非同期タスクを実行
     }
 }

@@ -16,11 +16,12 @@ import java.net.SocketException;
 public class ASyncTaskTest extends AsyncTask<InetSocketAddress, Void, String> {
 
     private CallBackTask mcallbacktask;
-    private byte mbuf[];
+    private String mstring;
+    private Integer ii = 0;
 
-    public ASyncTaskTest(byte buf[])
+    public ASyncTaskTest(String string)
     {
-        mbuf = buf;
+        mstring = string;
     }
 
     // バックグラウンドの処理。ここではTextViewの操作はできない。
@@ -35,7 +36,7 @@ public class ASyncTaskTest extends AsyncTask<InetSocketAddress, Void, String> {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
             // データを送信。
-            writer.write(String.valueOf(mbuf));
+            writer.write(mstring);
 
             // クローズしておかないと、受信側でデータが反映されなかった。多分、クローズしたときに受信が側にデータが反映される。
             writer.close();

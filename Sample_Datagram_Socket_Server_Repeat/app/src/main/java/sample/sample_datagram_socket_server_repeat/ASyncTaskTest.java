@@ -47,11 +47,12 @@ public class ASyncTaskTest extends AsyncTask<Void, Void, String> implements Rece
                     ak2 = new ReceiveASyncTask(mew);
                     ak2.setOnCallBack(this);
                     //ak2.execute(datagramSocket);  // 非同期タスクを実行
-                    ak2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, datagramSocket);
+                    ak2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, datagramPacket);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
+            datagramSocket.close();
         }
 
         return null;
@@ -64,6 +65,7 @@ public class ASyncTaskTest extends AsyncTask<Void, Void, String> implements Rece
 
     @Override
     public void CallBack() {
+        ak2 = null;
         misOk = true;
     }
 }

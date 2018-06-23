@@ -15,7 +15,7 @@ import java.net.Socket;
  * Created by Kazuki on 2018/06/16.
  */
 
-public class ReceiveASyncTask extends AsyncTask<DatagramSocket, Void, DatagramPacket> {
+public class ReceiveASyncTask extends AsyncTask<DatagramPacket, Void, DatagramPacket> {
 
     private EditText mew;
     DatagramPacket datagramPacket;
@@ -29,16 +29,8 @@ public class ReceiveASyncTask extends AsyncTask<DatagramSocket, Void, DatagramPa
 
     // バックグラウンドの処理。ここではTextViewの操作はできない。
     @Override
-    protected DatagramPacket doInBackground(DatagramSocket... datagramSockets) {
-        // 受信したデータを格納
-        try {
-            datagramPacket = new DatagramPacket(receiveBuff, receiveBuff.length);
-            datagramSockets[0].receive(datagramPacket);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return datagramPacket;
+    protected DatagramPacket doInBackground(DatagramPacket... datagramPackets) {
+        return datagramPackets[0];
     }
 
     // doInBackgroundの処理が終了した後に呼ばれる。ここではTextViewの操作はできる。

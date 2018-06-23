@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         Button button = (Button) findViewById(R.id.button);
-        Button resetButton = (Button) findViewById(R.id.button2);
         et = (EditText)findViewById(R.id.editText);
 
         // 送信ボタン押下処理

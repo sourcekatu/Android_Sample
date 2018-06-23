@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://C:\git_work\AndroidStudioProjects\Sample\Sample_Socket\Sample_Socket_Client_Repeat\Sample_CallBack_Repeat2.iml" filepath="C:\git_work\AndroidStudioProjects\Sample\Sample_Socket\Sample_Socket_Client_Repeat\Sample_CallBack_Repeat2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Sample_Socket_Server_Repeat.iml" filepath="$PROJECT_DIR$/Sample_Socket_Server_Repeat.iml" />
-    </modules>
-  </component>
-</project>
